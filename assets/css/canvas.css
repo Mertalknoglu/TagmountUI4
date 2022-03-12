@@ -1,0 +1,73 @@
+body {
+    background: #f3f3f3;
+}
+
+.video-play-button {
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+._play {
+    background-image:  url('../img/play-button.png')!important;
+    background-size: contain;
+}
+._pause {
+    background-image:  url('../img/video-pause-button.png')!important;
+    background-size: contain;
+}
+._backward {
+    background-image:  url('../img/backward-btn.png')!important;
+    background-size: contain;
+}
+._forward {
+    background-image:  url('../img/forward-btn.png')!important;
+    background-size: contain;
+}
+#playOrPause {
+    margin-top: 14px;
+    
+}   
+#canvasVideo {
+    border: 5px solid red;
+    position: absolute;
+}
+
+#canvasDraw {
+
+    border: 5px solid black;
+}
+
+#canvasContainer {
+
+    position: absolute;
+}
+
+
+.my_video-dimensions {
+    width: 875px;
+    height: 604px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.fluid-position-1 {
+    padding: 3%;
+    padding-right: 0;
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    .fluid-position-1 {
+        padding: 3%;
+    }
+}
+
+@media screen and (min-width:450px) and (max-width:575px) {
+    .fluid-position-1 {
+        padding-right: 6%;
+    }
+}
+
+@media screen and (min-width:280px) and (max-width:449px) {
+    .fluid-position-1 {
+        padding-right: 5%;
+    }
+}

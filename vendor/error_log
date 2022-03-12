@@ -1,0 +1,11 @@
+[07-Mar-2022 09:12:24 Europe/Istanbul] PHP Fatal error:  Uncaught Error: Call to a member function execute() on bool in /home/hastagya/keka.hastagyazilim.com/vendor/pointerlist.php:24
+Stack trace:
+#0 {main}
+  thrown in /home/hastagya/keka.hastagyazilim.com/vendor/pointerlist.php on line 24
+[08-Mar-2022 00:24:08 Europe/Istanbul] PHP Fatal error:  Uncaught Error: Call to a member function execute() on bool in /home/hastagya/keka.hastagyazilim.com/vendor/pointerListDetail.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/hastagya/keka.hastagyazilim.com/vendor/pointerListDetail.php on line 10
+[08-Mar-2022 00:26:28 Europe/Istanbul] PHP Notice:  Undefined index: guid in /home/hastagya/keka.hastagyazilim.com/vendor/pointerListDetail.php on line 38
+[08-Mar-2022 00:26:28 Europe/Istanbul] PHP Notice:  Undefined variable: idliste in /home/hastagya/keka.hastagyazilim.com/vendor/pointerListDetail.php on line 42
+[08-Mar-2022 00:27:35 Europe/Istanbul] PHP Notice:  Undefined variable: idliste in /home/hastagya/keka.hastagyazilim.com/vendor/pointerListDetail.php on line 42
