@@ -86,11 +86,13 @@ function saveTimer() {
     document.getElementById('phppointerList').value = JSON.stringify(pointerList);
 }
 
-// $("#clearDraw").click(function() {
-//     clearDraw();
-//   });
-// function clearDraw(){
-//     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-//     jsonTimer = [];
-//     videoDrawList=[];
-// }
+$("#clearDraw").click(function() {
+   
+  });
+function clearDraw(){
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    
+    pointerList=[];
+    videoDrawList=[];
+    videoHtmlLst=[];
+}

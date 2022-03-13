@@ -13,13 +13,19 @@ var getdata = function () {
 var videoHtmlLst = [];
 var videoDrawList = [];
 function onShowPointerList(guid) {
-
+   
     $.ajax({
         type: "POST",
         url: "pointerListDetail.php",
         data: "id=" + guid,
         success: function (x) {
+            $("#showModeSettingsCheckbox").prop('checked', true);
+            showModeButtonControl=false;
+            showAndDrawMode();
             setPointerInfo(x);
+            mediaPlayer.currentTime(videoDrawList[0]["time"]);
+            stopPlayerTime = videoDrawList[videoDrawList.length-1]["time"];
+            mediaPlay();
         }
     });
 
@@ -32,8 +38,14 @@ function onShowPointer(tagmountId) {
         url: "pointerListDetail.php",
         data: "bolum_id=" + tagmountId,
         success: function (x) {
-
+            $("#showModeSettingsCheckbox").prop('checked', true);
+            showModeButtonControl=false;
+            showAndDrawMode();
             setPointerInfo(x);
+            mediaPlayer.currentTime(videoDrawList[0]["time"]);
+            stopPlayerTime = videoDrawList[videoDrawList.length-1]["time"];
+            mediaPlay();
+            
         }
     });
 
@@ -77,12 +89,18 @@ function onShowPointer(tagmountId) {
 function setPointerInfo(x){
     videoDrawList=[];
     videoHtmlLst=[];
+    pointerList=[];
     const obj = JSON.parse(x);
     obj.forEach(element => {
-        pointerList = JSON.parse(element["MYJSON"]);
-        pointerList.forEach(lst=> {
+       
+       
+        JSON.parse(element["MYJSON"]).forEach(lst=> {
+           pointerList.push(lst);
+        });
+        console.log(pointerList);
+        JSON.parse(element["MYJSON"]).forEach(lst=> {
             lst.forEach(e => {
-                videoDrawList.push({
+               videoDrawList.push({
                     id: element["ID"],
                     time: e.time,
                     positionx: e.positionx,
@@ -100,7 +118,6 @@ function setPointerInfo(x){
             ballSize:element["POINTERSIZE"]
 
         });
-
 
     });
     // videoDrawWidth = obj[0]["VIDEOWIDTH"];//885;

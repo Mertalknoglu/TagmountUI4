@@ -67,7 +67,7 @@
                     <div class="row">
                         <hr class="hr">
                         <div class="btn ">
-                            <input class="text-light" type="submit" onclick="kayitekle();" value="Save Pointer " style=" width:100%; background-color: #222f3e; border:none;">
+                            <input class="button" type="submit" onclick="kayitekle();" value="Save Pointer " >
                             <!-- onclick="addlinkf()"> -->
                         </div>
                     </div>
@@ -102,14 +102,13 @@
     <script src="assets/UI-JS/pointerSettings.js"></script>
     <script src="assets/UI-JS/infoCardSettings.js"></script>
     <script src="assets/bootstrap/js/movieselect.js"></script>
+    <script src="assets/UI-JS/drawingMode.js"></script>
 
     <script>
         $(document).ready(function() {
 
             videoDrawWidth = $("#my_video").width() + 10;
             videoDrawHeight = $("#my_video").height() + 10;
-            console.log(videoDrawWidth);
-            console.log(videoDrawHeight);
             canvas.init('#videoDiv', '#my_video');
             pointer.init('#my_video');
             // videoTimer.init("my_video");

@@ -63,7 +63,7 @@
     <div class="btn ">
         <?php
         if (isset($list->BOLUM_ID)) { ?>
-            <input class="text-light" type="button" onclick="onShowPointer('<?= $list->BOLUM_ID ?>')" value="Show All Pointer" style=" width:100%; background-color: #222f3e; border:none;">
+            <input class="button" type="button" onclick="onShowPointer('<?= $list->BOLUM_ID ?>')" value="Show All Pointer" >
             <!-- onclick="addlinkf()"> -->
         <?php } ?>
     </div>

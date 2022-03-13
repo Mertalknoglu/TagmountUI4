@@ -23,7 +23,6 @@
                         <button type="button" id="mediaPause" class="video-play-button _pause"></button>
                         <button type="button" id="backward" class="video-play-button _backward" style="padding-top:2px;"> </button>
                         <button type="button" id="forward" class="video-play-button _forward" style="padding-top:2px;"></button>
-                        <!-- <button type="button" id="clearDraw" class="video-play-button _forward" style="padding-top:2px;"></button> -->
 
 
                     </div>
@@ -40,6 +39,16 @@
 
 
                     </div>
+
                 </div>
+            </div>
+            <hr class="hr-3" style="margin-bottom:15px;">
+            <div class="col-xs-3 col-md-3 col-lg-3 col-xl-3">
+                <a>
+                    <div style="margin-bottom:10px;"><span><b>Show Mode </b></span> </div>
+                    <label class="switch">
+                        <input id="showModeSettingsCheckbox" type="checkbox">
+                        <span class="slider round"></span>
+                </a>
             </div>
         </div>

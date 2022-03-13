@@ -32,7 +32,6 @@ function videoChange(id) {
             });
             mediaPlayer.load();
             getVideoDuration();
-            mediaPlayer.play();
         }
     });
 }

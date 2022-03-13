@@ -42,10 +42,15 @@ var drawBallTime = function (selectedTime) {
     }
     else {
         $(pointerObj).attr("style", "display: none ;");
+        $(infoCardObj).attr("style", "display: none ;");
     }    
 }
-var oldLeft = 0;
-var oldTop = 0;
+var oldLeft=0;
+var oldTop=0;
+var infoCardOldLeft;
+var infoCardOoldTop;
+var infoCardLeft;
+var infoCardTop;
 var oldTagmountId = 0;
 function drawBall(coorX, coorY, tagmountId) {
 
@@ -66,30 +71,38 @@ function drawBall(coorX, coorY, tagmountId) {
         variableInitialize(tagmountId);
         oldTagmountId = tagmountId;
     }
-    //$(pointerObj).html(pointerHtml);
     if ($(pointerObj).html() != '') {
-        // console.log(1);
         $(pointerObj).attr("style", "display: inline !important; position:absolute; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
+        $(infoCardObj).attr("style", "width:auto; height:auto; border-radius:5px;  display:inline-block; position:absolute; z-index:2147483647");
+        infoCardLeft = $(pointerObj).position().left + ($(pointerObj).width() / 2) - ($(infoCardObj).width() / 2);
+        infoCardTop = $(pointerObj).position().top - ($(infoCardObj).height());
+        $(infoCardObj).attr("style", "left:" + infoCardOldLeft + "px; top:" + infoCardOoldTop + "px; position:absolute; z-index:2147483647");
     } else {
-        //console.log(2);
         // // koordinatta objenin merkezi yer alması için.
         //   pointerLeft = pointerLeft - ($(pointerObj).width() / 2);
         //   pointerTop = pointerTop - ($(pointerObj).height() / 2);
-        // $(pointerObj).attr("style", "display: inline !important; position:absolute;  border-radius:300vw; background:" + pointerBackgroundColor + "; height:" + ballSize + "px; width:" + ballSize + "px; border:1px solid; border-color:" + pointerBorderColor + "; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
-        $(pointerObj).attr("style", "display: inline !important; position:absolute;  border-radius:300vw; background:" + pointerBackgroundColor + "; height:" + ballSize + "px; width:" + ballSize + "px; border:1px solid; border-color:" + pointerBorderColor + "; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
+       // $(pointerObj).attr("style", "display: inline !important; position:absolute;  border-radius:300vw; background:" + pointerBackgroundColor + "; height:" + ballSize + "px; width:" + ballSize + "px; border:1px solid; border-color:" + pointerBorderColor + "; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
+       $(pointerObj).attr("style", "display: inline !important; position:absolute;  border-radius:300vw; background:" + pointerBackgroundColor + "; height:" + ballSize + "px; width:" + ballSize + "px; border:1px solid; border-color:" + pointerBorderColor + "; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
+        //$(infoCardObj).html(infoCardHtml);
+        $(infoCardObj).attr("style", "width:auto; height:auto; border-radius:5px;  display:inline-block; position:absolute; z-index:2147483647");
+        infoCardLeft = $(pointerObj).position().left + ($(pointerObj).width() / 2) - ($(infoCardObj).width() / 2);
+        infoCardTop = $(pointerObj).position().top - ($(infoCardObj).height());
+        $(infoCardObj).attr("style", "left:" + infoCardOldLeft + "px; top:" + infoCardOoldTop + "px; position:absolute; z-index:2147483647");
+    }    
+    $(pointerObj).animate({"left": pointerLeft + "px", "top": pointerTop + "px" },
 
-    }
-    $(pointerObj).animate({ "left": pointerLeft + "px", "top": pointerTop + "px" }, {
-
-        duration: (1)
-    }
-    );
+       {duration:1}   );
     oldLeft = pointerLeft;
     oldTop = pointerTop;
+        $(infoCardObj).animate({"left": infoCardOldLeft + "px", "top": infoCardOoldTop + "px" },
+
+       {duration:1}   );
+    infoCardOldLeft = infoCardLeft;
+    infoCardOoldTop = infoCardTop;
 
 }
 function variableInitialize(tagmountId) {
-    console.log(videoHtmlLst);
+  
     var varLst = videoHtmlLst.find(v => v.id == tagmountId);
     console.log(varLst);
     if (varLst != undefined && varLst.length != 0) {
@@ -112,13 +125,17 @@ function variableInitialize(tagmountId) {
 }
 
 function addPointerEvents() {
-    $(pointerObj).mouseover(function () {
-        infoCardShow();
-    });
-    $(pointerObj).mouseout(function () {
-        $(infoCardObj).attr("style", "display:none;");
-    });
+    // $(pointerObj).mouseover(function () {
+    //     infoCardShow();
+    // });
+    // $(pointerObj).mouseout(function () {
+    //     $(infoCardObj).attr("style", "display:none;");
+    // });
     $(pointerObj).click(function () {
+        openLink();
+
+    });
+    $(infoCardObj).click(function () {
         openLink();
 
     });
