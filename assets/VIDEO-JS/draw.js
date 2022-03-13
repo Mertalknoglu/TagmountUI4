@@ -30,7 +30,9 @@ var addCanvasEvents = function () {
     });
     $(canvasVideo).mouseup(function () {
        // drawControl = false;
-        saveTimer();
+       
+    addTimeList(mediaPlayer.currentTime());
+    saveTimer();
     });
 }
 function getPosition(e) {
@@ -81,14 +83,8 @@ function saveTimer() {
         });
 
     });
-
-    const myJSON = JSON.stringify(drawList);
-    console.log(myJSON);
-
-    document.getElementById('phppointerList').value = myJSON;
-
+    document.getElementById('phppointerList').value = JSON.stringify(pointerList);
 }
-
 
 // $("#clearDraw").click(function() {
 //     clearDraw();

@@ -37,8 +37,9 @@
                         if ($json != null) {
                             $len = count($json);
                             if ($len > 0) {
-                                $bas = number_format($json[0]["time"], 3, '.', '');
-                                $bit = number_format($json[$len - 1]["time"], 3, '.', '');
+                                $bas = number_format($json[0][0]["time"], 3, '.', '');
+                                $lendrw = count($json[$len-1]);
+                                $bit = number_format($json[$len-1][$lendrw - 1]["time"], 3, '.', '');
                                 echo $bas . "-" . $bit;
                             }
                         }

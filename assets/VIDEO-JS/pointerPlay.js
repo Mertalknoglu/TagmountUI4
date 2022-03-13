@@ -12,7 +12,7 @@ var pointerPlay = function () {
 
             addPointerEvents();
         }
-        
+
     };
 }();
 
@@ -21,25 +21,28 @@ var pointerPlay = function () {
 var selectedTime = 0;
 var lasttime = 0;//TODO sonrasında silinecek.
 var drawBallTime = function (selectedTime) {
-     // console.log(lasttime, selectedTime);
-    var drawPositions = videoDrawList.filter(t => parseFloat(t.time) >= parseFloat(lasttime) && parseFloat(t.time) <= parseFloat(selectedTime));
-    lasttime = selectedTime;
-    if (drawPositions != undefined) {
-
-        if (drawPositions.length == 0) {
-            //console.log("bulunamadı.")
-          //  $(pointerObj).attr("style", "display: none ;");
-        } else {
+    var display = false;
+    for (let index = 0; index < pointerList.length; index++) {
+        const element = pointerList[index];
+        var bas = element[0].time;
+        var bit = element[element.length - 1].time;
+      if(bas<= selectedTime && selectedTime<=bit){
+            display = true;
+            break; // Behaves like `break`
+        }      
+    } 
+    if (display) {
+        var drawPositions = videoDrawList.filter(t => parseFloat(t.time) >= parseFloat(lasttime) && parseFloat(t.time) <= parseFloat(selectedTime));
+        lasttime = selectedTime;
+        if (drawPositions != undefined) {
             drawPositions.forEach(element => {
                 drawBall(element.positionx, element.positiony, element.id);
             });
         }
-
-    } else {
-        // console.log("bulunamadı222.")
-//$(pointerObj).attr("style", "display: none ;");
-
     }
+    else {
+        $(pointerObj).attr("style", "display: none ;");
+    }    
 }
 var oldLeft = 0;
 var oldTop = 0;
@@ -65,18 +68,18 @@ function drawBall(coorX, coorY, tagmountId) {
     }
     //$(pointerObj).html(pointerHtml);
     if ($(pointerObj).html() != '') {
-       // console.log(1);
+        // console.log(1);
         $(pointerObj).attr("style", "display: inline !important; position:absolute; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
     } else {
         //console.log(2);
         // // koordinatta objenin merkezi yer alması için.
         //   pointerLeft = pointerLeft - ($(pointerObj).width() / 2);
         //   pointerTop = pointerTop - ($(pointerObj).height() / 2);
-       // $(pointerObj).attr("style", "display: inline !important; position:absolute;  border-radius:300vw; background:" + pointerBackgroundColor + "; height:" + ballSize + "px; width:" + ballSize + "px; border:1px solid; border-color:" + pointerBorderColor + "; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
-       $(pointerObj).attr("style", "display: inline !important; position:absolute;  border-radius:300vw; background:" + pointerBackgroundColor + "; height:" + ballSize + "px; width:" + ballSize + "px; border:1px solid; border-color:" + pointerBorderColor + "; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
-   
-    }    
-    $(pointerObj).animate({"left": pointerLeft + "px", "top": pointerTop + "px" }, {
+        // $(pointerObj).attr("style", "display: inline !important; position:absolute;  border-radius:300vw; background:" + pointerBackgroundColor + "; height:" + ballSize + "px; width:" + ballSize + "px; border:1px solid; border-color:" + pointerBorderColor + "; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
+        $(pointerObj).attr("style", "display: inline !important; position:absolute;  border-radius:300vw; background:" + pointerBackgroundColor + "; height:" + ballSize + "px; width:" + ballSize + "px; border:1px solid; border-color:" + pointerBorderColor + "; left:" + oldLeft + "px; top:" + oldTop + "px; z-index:2147483647");
+
+    }
+    $(pointerObj).animate({ "left": pointerLeft + "px", "top": pointerTop + "px" }, {
 
         duration: (1)
     }
@@ -86,12 +89,14 @@ function drawBall(coorX, coorY, tagmountId) {
 
 }
 function variableInitialize(tagmountId) {
+    console.log(videoHtmlLst);
     var varLst = videoHtmlLst.find(v => v.id == tagmountId);
+    console.log(varLst);
     if (varLst != undefined && varLst.length != 0) {
         infoCardHtml = varLst["infoCardInnerHtml"];
         pointerOpenURL = varLst["pointerOpenURL"];
-        pointerBackgroundColor =varLst["pointerBackgroundColor"];
-        pointerBorderColor =varLst["pointerBorderColor"];
+        pointerBackgroundColor = varLst["pointerBackgroundColor"];
+        pointerBorderColor = varLst["pointerBorderColor"];
         ballSize = varLst["ballSize"];
         pointerHtml = varLst["pointerInnerHtml"];
     } else {

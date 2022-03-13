@@ -79,13 +79,15 @@ function setPointerInfo(x){
     videoHtmlLst=[];
     const obj = JSON.parse(x);
     obj.forEach(element => {
-        
-        JSON.parse(element["MYJSON"]).forEach(e => {
-            videoDrawList.push({
-                id: element["ID"],
-                time: e.time,
-                positionx: e.positionx,
-                positiony: e.positiony
+        pointerList = JSON.parse(element["MYJSON"]);
+        pointerList.forEach(lst=> {
+            lst.forEach(e => {
+                videoDrawList.push({
+                    id: element["ID"],
+                    time: e.time,
+                    positionx: e.positionx,
+                    positiony: e.positiony
+                });
             });
         });
         videoHtmlLst.push({

@@ -65,14 +65,15 @@ $("#pointerIconImage").click(function() {
 /*pointerinnerhtml */
 
 $( ".div-position-2" ).click(function() {
-  var pointerinnerhtml=$( ".div-position-2" ).html();
-    pointerHtml=pointerinnerhtml;
+    pointerHtml=$( ".div-position-2" ).html();
     $("#imageinnerhtml").val(pointerHtml);
     initDrawingHtml();
 });
 
 /*fill change */
-
+var pointerBgColor="red";
+var pointerBrColor="blue";
+var pointerSize=20;
 $( "#fillR" ).change(function() {
     var fillR = $('#fillR').val();
     var fillG = $('#fillG').val();
@@ -81,7 +82,7 @@ $( "#fillR" ).change(function() {
     $(".span-R").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
     $(".span-G").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
     $(".span-B").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
-    pointerBackgroundColor="rgb(" + fillR + "," + fillG + "," + fillB + ")";
+    pointerBgColor="rgb(" + fillR + "," + fillG + "," + fillB + ")";
     $("#fillInput").val(fillRGB);
     initDrawingHtml();
   });
@@ -94,7 +95,7 @@ $( "#fillR" ).change(function() {
     $(".span-R").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
     $(".span-G").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
     $(".span-B").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
-    pointerBackgroundColor="rgb(" + fillR + "," + fillG + "," + fillB + ")";
+    pointerBgColor="rgb(" + fillR + "," + fillG + "," + fillB + ")";
     $("#fillInput").val(fillRGB);
     initDrawingHtml();
   });
@@ -106,7 +107,7 @@ $( "#fillR" ).change(function() {
     $(".span-R").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
     $(".span-G").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
     $(".span-B").css("background-color", "rgb(" + fillR + "," + fillG + "," + fillB + ")");
-    pointerBackgroundColor="rgb(" + fillR + "," + fillG + "," + fillB + ")";
+    pointerBgColor="rgb(" + fillR + "," + fillG + "," + fillB + ")";
     $("#fillInput").val(fillRGB);
     initDrawingHtml();
   });
@@ -120,7 +121,7 @@ $( "#fillR" ).change(function() {
     $(".span-br-R").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $(".span-br-G").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $(".span-br-B").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");    
-    pointerBorderColor= "rgb(" + borderR + "," + borderG + "," + borderB + ")";
+    pointerBrColor= "rgb(" + borderR + "," + borderG + "," + borderB + ")";
     $(".img-box-1").css("border-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $("#borderInput").val(borderRGB);
     initDrawingHtml();
@@ -133,7 +134,7 @@ $( "#fillR" ).change(function() {
     $(".span-br-R").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $(".span-br-G").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $(".span-br-B").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");    
-    pointerBorderColor= "rgb(" + borderR + "," + borderG + "," + borderB + ")";
+    pointerBrColor= "rgb(" + borderR + "," + borderG + "," + borderB + ")";
     $(".img-box-1").css("border-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $("#borderInput").val(borderRGB);
     initDrawingHtml();
@@ -146,20 +147,25 @@ $( "#fillR" ).change(function() {
     $(".span-br-R").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $(".span-br-G").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $(".span-br-B").css("background-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");    
-    pointerBorderColor= "rgb(" + borderR + "," + borderG + "," + borderB + ")";
+    pointerBrColor= "rgb(" + borderR + "," + borderG + "," + borderB + ")";
     $(".img-box-1").css("border-color", "rgb(" + borderR + "," + borderG + "," + borderB + ")");
     $("#borderInput").val(borderRGB);
     initDrawingHtml();
   });
 
   function initDrawingHtml() {
-    videoHtmlLst = [
-      id = -1,
-      infoCardInnerHtml = infoCardHtml,
-      pointerInnerHtml = pointerHtml,
-      pointerOpenURL = pointerOpenURL,
-      pointerBackgroundColor = pointerBackgroundColor,
-      pointerBorderColor = pointerBorderColor,
-      ballSize = ballSize]
+    console.log("initDrawingHtml");
+    videoHtmlLst=[];
+      videoHtmlLst.push({
+        id: -1,
+        infoCardInnerHtml:infoCardHtml,
+        pointerInnerHtml:pointerHtml,
+        pointerOpenURL:pointerOpenURL,
+        pointerBackgroundColor:pointerBgColor,
+        pointerBorderColor:pointerBrColor,
+        ballSize:pointerSize
+    });
+    
+    variableInitialize(-1);
   }
 
