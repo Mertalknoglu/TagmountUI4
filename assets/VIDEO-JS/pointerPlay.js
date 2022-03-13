@@ -28,7 +28,7 @@ var drawBallTime = function (selectedTime) {
 
         if (drawPositions.length == 0) {
             //console.log("bulunamadı.")
-            $(pointerObj).attr("style", "display: none ;");
+          //  $(pointerObj).attr("style", "display: none ;");
         } else {
             drawPositions.forEach(element => {
                 drawBall(element.positionx, element.positiony, element.id);
@@ -37,7 +37,7 @@ var drawBallTime = function (selectedTime) {
 
     } else {
         // console.log("bulunamadı222.")
-        $(pointerObj).attr("style", "display: none ;");
+//$(pointerObj).attr("style", "display: none ;");
 
     }
 }

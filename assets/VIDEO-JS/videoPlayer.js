@@ -74,9 +74,9 @@ mediaPlayer.on('pause', () => {
 mediaPlayer.on('timeupdate', () => {
     $("#timeSlider").attr('max', mediaPlayer.duration());
     mseconds = mediaPlayer.currentTime();
-   
-    addTimeList(mseconds);
-
+   //if(drawControl){
+   // addTimeList(mseconds);
+//}
     drawBallTime(mseconds);
 
     $('#timeSlider').val(mseconds);

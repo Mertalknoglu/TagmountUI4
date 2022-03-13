@@ -4,28 +4,32 @@ let ctx;
 let jsonTimer = [];
 let pointerList = [];
 let drawList = [];
-let drawControl =false;
+let drawControl = false;
+let drawingFromMove = false;
+
 var draw = function () {
 
     return {
         init: function () {
             ctx = $(canvasVideo)[0].getContext("2d");
             addCanvasEvents();
+            
         }
     };
 }();
 
 var addCanvasEvents = function () {
     $(canvasVideo).mousemove(function (e) {
-      //if(drawControl)
-        drawLine(e);
+       // if (drawControl) 
+            drawLine(e);
     });
     $(canvasVideo).mousedown(function (e) {
-      //  drawControl=true;
+        //drawControl = true;
         getPosition(e);
+        
     });
     $(canvasVideo).mouseup(function () {
-      //  drawControl=false;
+       // drawControl = false;
         saveTimer();
     });
 }
@@ -47,27 +51,29 @@ var drawLine = function (e) {
     ctx.stroke(); // draw it!
     addTimeList(mediaPlayer.currentTime());
 }
-function addTimeList(mseconds){
-  
+
+
+function addTimeList(mseconds) {
+
     posX = position.x;
     posY = position.y;
-    
+
     jsonTimer.push({
         time: mseconds,
         positionx: posX,
         positiony: posY
-    
-    });  
-    }
+
+    });
+}
 function saveTimer() {
     pointerList.push(jsonTimer);
-    
+
     jsonTimer = [];
-    videoDrawList=[];
+    videoDrawList = [];
     pointerList.forEach(element => {
         element.forEach(e => {
             videoDrawList.push({
-                id:-1,///gecicikayıt için -1  seçildi
+                id: -1,///gecicikayıt için -1  seçildi
                 time: e.time,
                 positionx: e.positionx,
                 positiony: e.positiony
@@ -78,10 +84,12 @@ function saveTimer() {
 
     const myJSON = JSON.stringify(drawList);
     console.log(myJSON);
-    
+
     document.getElementById('phppointerList').value = myJSON;
-    
+
 }
+
+
 // $("#clearDraw").click(function() {
 //     clearDraw();
 //   });

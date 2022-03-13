@@ -33,12 +33,12 @@
                             <div id="timePickerDiv" class="col-xs-2 col-md-2 col-lg-2 col-xl-2" style="margin-top:-2px;">
                                 <time id="timePicker"><b>00:00:00</b></time>
                             </div>
-                            <div  class="col-xs-10 col-md-10 col-lg-10 col-xl-10"  style="margin-top:0px;">
-                            <input id="timeSlider" type="range" min="0" max="100" value="0"></input>
+                            <div class="col-xs-10 col-md-10 col-lg-10 col-xl-10" style="margin-top:0px;">
+                                <input id="timeSlider" type="range" min="0" max="100" value="0"></input>
                             </div>
                         </div>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
